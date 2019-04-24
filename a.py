@@ -3,7 +3,7 @@ import urllib.request;
 import re;
 
 author = "Ian+Goodfellow"
-url = "https://arxiv.org/search/?query=" + author + "&searchtype=author"
+url = "https://arxiv.org/search/?query=" + author + "&searchtype=author&size=200"
 content = urllib.request.urlopen(url)
 html_str = content.read().decode('utf-8')
 pattern = 'title is-5 mathjax[\s\S]*?</p>'
@@ -40,3 +40,6 @@ plt.bar(x,y)
 plt.show()
 
 print(url)
+print(count)
+
+

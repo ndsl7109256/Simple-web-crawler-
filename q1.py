@@ -21,7 +21,7 @@ if page>=2.0:
         start = p*200
         url2 = url + "&start="+str(start)
         content = urllib.request.urlopen(url2)
-        print(url2)
+#        print(url2)
         html_str = html_str + content.read().decode('utf-8')
 
 
@@ -41,7 +41,7 @@ for g in years:
     date = g.split("originally announced</span>")[1].split("</p>")[0].strip()
     year = date.split(' ')[1].split('.')[0].strip()
 #    print(date)
-    print(int(year))
+#    print(int(year))
 #    print(g)
 
     if g.find(authors) != -1:

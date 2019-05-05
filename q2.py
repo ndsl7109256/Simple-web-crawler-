@@ -5,6 +5,7 @@ import re;
 #author = "Ian+Goodfellow"
 
 author = input("Input Author: ")
+authors = author
 author = author.replace(" ","+")
 
 
@@ -24,8 +25,8 @@ if page>=2.0:
         print(url2)
         html_str = html_str + content.read().decode('utf-8')
 
-
-pattern = '<a href=\"/search/\?searchtype=author[\s\S]*?</a>'
+pattern = '<li class=\"arxiv-result[\s\S]*?</li>'
+pattern2 = '<a href=\"/search/\?searchtype=author[\s\S]*?</a>'
 result = re.findall(pattern, html_str)
 
 
@@ -33,8 +34,12 @@ names = []
 
 #print("[ Author: " + author + " ]")
 for r in result:
-    co = r.split("\">")[1].split("</a>")[0].strip()
-    names.append(co)
+    #print(r)
+    if r.find(authors) != -1:    
+        nameList = re.findall(pattern2,r)
+        for n in nameList:
+            co = n.split("\">")[1].split("</a>")[0].strip()
+            names.append(co)
 
 
 p = list(set(names))
